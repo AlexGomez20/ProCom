@@ -5,6 +5,8 @@
  */
 package tools;
 
+import java.io.File;
+
 /**
  *
  * @author Alexander
@@ -15,7 +17,9 @@ public class GexLex {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        String archivo = "Expresiones.flex";
+        String ruta = "src"+File.separator+"Principal"+File.separator+archivo;
+        jflex.Main.generate(new File(ruta));
     }
     
 }
