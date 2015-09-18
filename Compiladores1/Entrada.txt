@@ -1,0 +1,3 @@
+entero numero1,numero2 = 3
+boleano bol1,bol2,bol3 = verdadero
+real rea1,rea2,rea3 = 123.57
