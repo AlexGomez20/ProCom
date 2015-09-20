@@ -19,8 +19,9 @@ class Alexico {
 
   /** lexical states */
   public static final int YYINITIAL = 0;
-  public static final int A = 2;
-  public static final int B = 4;
+  public static final int V1 = 2;
+  public static final int V2 = 4;
+  public static final int P1 = 6;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -29,18 +30,19 @@ class Alexico {
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = { 
-     0,  0,  1,  1,  2, 2
+     0,  0,  1,  1,  2,  2,  3, 3
   };
 
   /** 
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\0\1\27\1\31\1\31\1\30\22\0\1\22\1\0\1\0"+
-    "\10\0\1\23\1\17\1\23\1\3\1\0\1\1\11\2\3\0\1\16"+
-    "\3\0\32\24\6\0\1\5\1\10\1\20\1\21\1\12\1\25\2\7"+
-    "\1\7\2\7\1\11\1\7\1\13\1\15\2\7\1\6\1\26\1\14"+
-    "\1\7\1\4\4\7\12\0\1\31\u1fa2\0\1\31\1\31\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\36\1\33\1\35\1\35\1\34\22\0\1\25\1\0\1\0"+
+    "\5\0\1\14\1\14\1\0\1\26\1\23\1\26\1\13\1\0\1\11"+
+    "\11\12\3\0\1\22\3\0\17\30\1\1\12\30\6\0\1\7\1\16"+
+    "\1\5\1\24\1\17\1\31\2\27\1\3\2\27\1\10\1\27\1\4"+
+    "\1\21\1\6\1\27\1\2\1\32\1\20\1\27\1\15\4\27\12\0"+
+    "\1\35\u1fa2\0\1\35\1\35\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -53,11 +55,13 @@ class Alexico {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\3\0\7\1\1\2\1\0\2\3\2\4\10\0\1\3"+
-    "\7\0\1\5\1\6\10\0\1\7\4\0\1\10\2\0";
+    "\4\0\7\1\1\2\1\0\2\3\2\4\3\0\2\1"+
+    "\1\5\2\1\1\6\5\0\1\3\13\0\1\7\1\10"+
+    "\20\0\1\11\4\0\1\12\1\13\6\0\1\11\11\0"+
+    "\1\14";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[50];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -82,16 +86,20 @@ class Alexico {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\32\0\64\0\116\0\150\0\202\0\234\0\266"+
-    "\0\320\0\352\0\u0104\0\u011e\0\u0138\0\u0152\0\u016c\0\u0186"+
-    "\0\u01a0\0\u01ba\0\u01d4\0\u01ee\0\u0208\0\u0222\0\u023c\0\u0256"+
-    "\0\116\0\u0270\0\u028a\0\u02a4\0\u02be\0\u02d8\0\u02f2\0\u030c"+
-    "\0\116\0\u0270\0\u0326\0\u0340\0\u035a\0\u0374\0\u038e\0\u03a8"+
-    "\0\u03c2\0\u03dc\0\116\0\u03f6\0\u0410\0\u042a\0\u0444\0\116"+
-    "\0\u045e\0\u0478";
+    "\0\0\0\37\0\76\0\135\0\174\0\233\0\272\0\331"+
+    "\0\370\0\u0117\0\u0136\0\u0155\0\u0174\0\u0193\0\u01b2\0\u01d1"+
+    "\0\u01f0\0\u020f\0\u022e\0\u024d\0\u026c\0\u028b\0\174\0\u02aa"+
+    "\0\u02c9\0\174\0\u02e8\0\u0307\0\u0326\0\u0345\0\u0364\0\174"+
+    "\0\u0383\0\u03a2\0\u03c1\0\u03e0\0\u03ff\0\u041e\0\u043d\0\u045c"+
+    "\0\u047b\0\u049a\0\u04b9\0\174\0\u0383\0\u04d8\0\u04f7\0\u0516"+
+    "\0\u0535\0\u0554\0\u0573\0\u0592\0\u05b1\0\u05d0\0\u05ef\0\u060e"+
+    "\0\u062d\0\u064c\0\u066b\0\u068a\0\u06a9\0\174\0\u06c8\0\u06e7"+
+    "\0\u0706\0\u0725\0\174\0\174\0\u0744\0\u0763\0\u0782\0\u07a1"+
+    "\0\u07c0\0\u07df\0\u07fe\0\u081d\0\u083c\0\u085b\0\u087a\0\u0899"+
+    "\0\u08b8\0\u08d7\0\u08f6\0\u0915\0\174";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[50];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -114,25 +122,35 @@ class Alexico {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\6\4\1\5\1\4\1\6\1\4\1\7\5\4\1\10"+
-    "\6\4\1\11\1\12\5\0\12\13\1\0\1\4\2\13"+
-    "\1\14\2\0\2\13\1\15\1\16\2\0\1\17\1\20"+
-    "\1\0\1\21\16\0\1\22\1\0\1\23\1\0\1\15"+
-    "\1\16\45\0\1\24\34\0\1\25\27\0\1\26\23\0"+
-    "\1\27\54\0\1\4\30\0\1\4\3\0\2\13\1\0"+
-    "\12\13\2\0\2\13\2\0\3\13\21\0\1\30\43\0"+
-    "\1\31\30\0\1\31\5\0\1\32\27\0\2\20\1\32"+
-    "\40\0\1\33\20\0\1\17\1\20\34\0\1\34\31\0"+
-    "\1\35\35\0\1\36\34\0\1\37\36\0\1\40\32\0"+
-    "\1\41\10\0\1\32\1\42\35\0\1\43\34\0\1\44"+
-    "\31\0\1\45\32\0\1\46\31\0\1\47\31\0\1\50"+
-    "\40\0\1\51\36\0\1\52\25\0\1\53\14\0\1\54"+
-    "\32\0\1\55\36\0\1\56\23\0\1\57\41\0\1\60"+
-    "\27\0\1\55\33\0\1\45\21\0\1\45\45\0\1\61"+
-    "\22\0\1\62\25\0\1\52\23\0";
+    "\2\5\1\6\2\5\1\7\10\5\1\10\1\11\13\5"+
+    "\1\12\1\13\1\0\1\5\2\0\7\14\4\0\5\14"+
+    "\1\0\1\5\1\14\1\15\1\0\1\14\1\0\2\14"+
+    "\1\16\1\17\13\0\1\20\1\21\2\0\1\22\10\0"+
+    "\1\23\2\0\1\24\1\0\1\16\1\17\2\0\2\5"+
+    "\1\25\2\5\1\26\6\5\1\27\1\5\1\30\1\31"+
+    "\13\5\1\12\1\13\1\0\1\32\56\0\1\33\26\0"+
+    "\1\34\50\0\1\35\21\0\1\36\66\0\1\5\35\0"+
+    "\1\5\4\0\12\14\2\0\5\14\2\0\1\14\2\0"+
+    "\4\14\26\0\1\37\50\0\1\40\35\0\1\40\16\0"+
+    "\1\41\34\0\2\21\1\41\42\0\1\42\30\0\1\20"+
+    "\1\21\33\0\1\43\46\0\1\44\26\0\1\45\50\0"+
+    "\1\46\21\0\1\47\41\0\1\50\53\0\1\51\22\0"+
+    "\1\52\46\0\1\53\43\0\1\54\22\0\1\41\1\55"+
+    "\26\0\1\56\44\0\1\57\35\0\1\60\53\0\1\61"+
+    "\22\0\1\62\46\0\1\63\26\0\1\64\45\0\1\65"+
+    "\36\0\1\66\36\0\1\67\43\0\1\70\44\0\1\71"+
+    "\14\0\1\72\45\0\1\73\36\0\1\74\36\0\1\75"+
+    "\44\0\1\76\15\0\1\77\41\0\1\100\31\0\1\101"+
+    "\43\0\1\102\50\0\1\103\42\0\1\104\15\0\1\105"+
+    "\41\0\1\106\31\0\1\107\43\0\1\64\33\0\1\110"+
+    "\53\0\1\111\41\0\1\112\21\0\1\72\33\0\1\107"+
+    "\53\0\1\72\36\0\1\64\42\0\1\113\30\0\1\114"+
+    "\20\0\1\115\37\0\1\71\36\0\1\116\37\0\1\117"+
+    "\37\0\1\120\37\0\1\121\34\0\1\122\41\0\1\123"+
+    "\37\0\1\124\37\0\1\125\26\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1170];
+    int [] result = new int[2356];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -170,11 +188,12 @@ class Alexico {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\3\0\1\11\7\1\1\0\4\1\10\0\1\11\7\0"+
-    "\1\11\1\1\10\0\1\11\4\0\1\11\2\0";
+    "\4\0\1\11\7\1\1\0\4\1\3\0\2\1\1\11"+
+    "\2\1\1\11\5\0\1\11\13\0\1\11\1\1\20\0"+
+    "\1\11\4\0\2\11\6\0\1\1\11\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[50];
+    int [] result = new int[85];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -251,6 +270,7 @@ class Alexico {
 
   /* user code: */
 /*Codigo*/
+int EsAc = 0;
 
 
   /**
@@ -273,7 +293,7 @@ class Alexico {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 130) {
+    while (i < 142) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -626,35 +646,51 @@ class Alexico {
           case 1: 
             { 
             }
-          case 9: break;
+          case 13: break;
           case 2: 
             { System.out.println("Token: " + yytext());
             }
-          case 10: break;
+          case 14: break;
           case 3: 
-            { yybegin(YYINITIAL);
+            { yybegin(EsAc);
             }
-          case 11: break;
+          case 15: break;
           case 4: 
             { System.out.println("Entero: " + yytext());
             }
-          case 12: break;
+          case 16: break;
           case 5: 
-            { System.out.println("Token: " + yytext()); yybegin(B);
+            { System.out.println("Encontre parentesis: " + yytext());
             }
-          case 13: break;
+          case 17: break;
           case 6: 
+            { System.out.println("Dentro de la clase Principal");
+            }
+          case 18: break;
+          case 7: 
+            { System.out.println("Token: " + yytext()); yybegin(V2);
+            }
+          case 19: break;
+          case 8: 
             { System.out.println("Real: " + yytext());
             }
-          case 14: break;
-          case 7: 
-            { System.out.println("Token: " + yytext()); yybegin(A);
+          case 20: break;
+          case 9: 
+            { System.out.println("Token: " + yytext()); yybegin(V1);
             }
-          case 15: break;
-          case 8: 
+          case 21: break;
+          case 10: 
             { System.out.println("Boleano: " + yytext());
             }
-          case 16: break;
+          case 22: break;
+          case 11: 
+            { EsAc = P1; System.out.println("Token: " + yytext()); yybegin(V1);
+            }
+          case 23: break;
+          case 12: 
+            { System.out.println("Clase Principal"); yybegin(P1);
+            }
+          case 24: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
